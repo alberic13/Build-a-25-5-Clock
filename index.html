@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25 + 5 Clock | Pomodoro Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-wrapper">
+    <header class="app-header">
+      <h1>25 + 5 Clock</h1>
+      <p>FreeCodeCamp Pomodoro Timer</p>
+    </header>
+
+    <section id="clock-card" class="clock-card mode-session">
+      <!-- Length Steppers -->
+      <div class="lengths-container">
+        <!-- Break Length Control -->
+        <div class="length-box">
+          <div id="break-label" class="length-label">Break Length</div>
+          <div class="length-stepper">
+            <button id="break-decrement" class="step-btn" type="button" aria-label="Decrement break length">-</button>
+            <span id="break-length" class="length-value">5</span>
+            <button id="break-increment" class="step-btn" type="button" aria-label="Increment break length">+</button>
+          </div>
+        </div>
+
+        <!-- Session Length Control -->
+        <div class="length-box">
+          <div id="session-label" class="length-label">Session Length</div>
+          <div class="length-stepper">
+            <button id="session-decrement" class="step-btn" type="button" aria-label="Decrement session length">-</button>
+            <span id="session-length" class="length-value">25</span>
+            <button id="session-increment" class="step-btn" type="button" aria-label="Increment session length">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Circular Timer Display -->
+      <div class="timer-container">
+        <svg class="timer-svg" viewBox="0 0 300 300">
+          <circle class="ring-bg" cx="150" cy="150" r="135" />
+          <circle id="progress-ring-circle" class="ring-progress" cx="150" cy="150" r="135" />
+        </svg>
+
+        <div class="timer-content">
+          <div id="timer-label" class="timer-badge">Session</div>
+          <div id="time-left" class="timer-digits">25:00</div>
+        </div>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="controls-container">
+        <button id="start_stop" class="control-btn start-stop-btn" type="button" aria-label="Start Timer">
+          <svg id="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <svg id="pause-icon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+          <span>Start / Pause</span>
+        </button>
+
+        <button id="reset" class="control-btn reset-btn" type="button" aria-label="Reset Timer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span>Reset</span>
+        </button>
+      </div>
+
+      <!-- Quick Presets -->
+      <div class="presets-container">
+        <button type="button" class="preset-btn" data-session="25" data-break="5">25 / 5 Standard</button>
+        <button type="button" class="preset-btn" data-session="50" data-break="10">50 / 10 Focus</button>
+        <button type="button" class="preset-btn" data-session="15" data-break="3">15 / 3 Sprint</button>
+      </div>
+    </section>
+
+    <!-- Footer & Utilities -->
+    <footer class="app-footer">
+      <span>Shortcuts: Space (Start/Pause), R (Reset)</span>
+      <button id="test-beep" class="icon-btn" type="button" title="Test Beep Sound" aria-label="Test Beep Sound">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+      </button>
+    </footer>
+  </main>
+
+  <!-- FCC Audio Element -->
+  <audio id="beep" preload="auto" src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/beep.mp3"></audio>
+
+  <!-- FreeCodeCamp Test Suite -->
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+  <!-- Application Logic -->
+  <script src="js/sound.js"></script>
+  <script src="js/timerEngine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
